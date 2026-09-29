@@ -1,0 +1,739 @@
+/* =========================================================
+   PROMPT / EDITOR PAGE
+   ========================================================= */
+
+.prompt-page {
+  min-height: 100vh;
+  background: #fafaf9;
+  color: #171717;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.editor-header {
+  height: 76px;
+  padding: 0 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(250, 250, 249, 0.94);
+
+  border-bottom: 1px solid #e7e7e4;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #cfcfcb;
+
+  color: #171717;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+
+  background: #fff;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+
+  color: #171717;
+}
+
+.brand-subtitle {
+  color: #999994;
+
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.editor-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 11px;
+  letter-spacing: 0.12em;
+
+  color: #aaa;
+}
+
+.step-active {
+  color: #171717;
+}
+
+.step-divider {
+  width: 30px;
+  height: 1px;
+
+  background: #d9d9d5;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.editor-layout {
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 48px 42px 70px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(420px, 0.9fr)
+    minmax(500px, 1.1fr);
+
+  gap: 70px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+.image-section {
+  min-width: 0;
+}
+
+.section-heading {
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #999994;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-heading h1,
+.prompt-header h1 {
+  margin: 0;
+
+  color: #171717;
+
+  font-size: 28px;
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.image-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #f1f1ef;
+
+  border: 1px solid #e2e2df;
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+.image-badge {
+  position: absolute;
+
+  top: 16px;
+  left: 16px;
+
+  padding: 6px 9px;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+
+  color: #555550;
+
+  font-size: 8px;
+  letter-spacing: 0.16em;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   PALETTE
+   ========================================================= */
+
+.palette-section {
+  margin-top: 25px;
+}
+
+.palette-heading {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin-bottom: 14px;
+}
+
+.palette-heading p {
+  margin: 0;
+
+  color: #777772;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.color-count {
+  color: #999994;
+
+  font-size: 10px;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.palette {
+  display: flex;
+  gap: 8px;
+}
+
+.palette-color {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 9px 7px 7px;
+
+  border: 1px solid #e2e2df;
+
+  background: #fff;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.palette-color:hover {
+  border-color: #cfcfcb;
+  background: #fdfdfc;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.palette-color span {
+  color: #777772;
+
+  font-size: 9px;
+
+  font-family: monospace;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.control-section {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.prompt-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 24px;
+}
+
+.prompt-header p {
+  max-width: 480px;
+
+  margin: 10px 0 0;
+
+  color: #777772;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.ai-status {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 8px;
+
+  color: #999994;
+
+  font-size: 8px;
+
+  letter-spacing: 0.14em;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #999994;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 0, 0, 0.035);
+}
+
+
+/* =========================================================
+   PROMPT EDITOR
+   ========================================================= */
+
+.prompt-editor {
+  overflow: hidden;
+
+  border: 1px solid #dededb;
+
+  background: #fff;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.025);
+}
+
+.prompt-editor-header {
+  height: 42px;
+
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #ededeb;
+
+  color: #777772;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+
+  background: #fafaf9;
+}
+
+.editable-label {
+  color: #aaa9a4;
+}
+
+.prompt-editor textarea {
+  width: 100%;
+
+  min-height: 390px;
+
+  display: block;
+
+  padding: 20px;
+
+  resize: vertical;
+
+  border: 0;
+  outline: 0;
+
+  background: #fff;
+
+  color: #33332f;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  scrollbar-width: thin;
+}
+
+.prompt-editor textarea::placeholder {
+  color: #aaa9a4;
+}
+
+.prompt-editor textarea::selection {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.prompt-editor textarea:focus {
+  outline: none;
+}
+
+.prompt-editor-footer {
+  height: 35px;
+
+  padding: 0 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid #ededeb;
+
+  color: #aaa9a4;
+
+  font-size: 9px;
+
+  background: #fafaf9;
+}
+
+
+/* =========================================================
+   GENERATION SETTINGS
+   ========================================================= */
+
+.settings-section {
+  margin-top: 28px;
+}
+
+.settings-heading {
+  margin-bottom: 14px;
+}
+
+.settings-heading p {
+  margin: 0;
+
+  color: #999994;
+
+  font-size: 11px;
+}
+
+.settings-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.setting-card {
+  padding: 15px;
+
+  border: 1px solid #e2e2df;
+
+  background: #fff;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.setting-card:hover {
+  border-color: #d0d0cc;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.025);
+}
+
+.setting-label {
+  margin-bottom: 12px;
+
+  color: #999994;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.15em;
+}
+
+.setting-card select {
+  width: 100%;
+
+  padding: 10px 11px;
+
+  border: 1px solid #dededb;
+
+  outline: none;
+
+  background: #fafaf9;
+
+  color: #33332f;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.setting-card select:hover {
+  border-color: #c9c9c5;
+}
+
+.setting-card select:focus {
+  border-color: #aaa9a4;
+
+  background: #fff;
+}
+
+.setting-card p {
+  margin: 9px 0 0;
+
+  color: #999994;
+
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   NUMBER SELECTOR
+   ========================================================= */
+
+.number-selector {
+  display: flex;
+  gap: 5px;
+}
+
+.number-option {
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid #dededb;
+
+  background: #fafaf9;
+
+  color: #999994;
+
+  cursor: pointer;
+
+  font-size: 11px;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.number-option:hover {
+  color: #33332f;
+
+  border-color: #c5c5c1;
+
+  background: #fff;
+}
+
+.number-option.active {
+  background: #171717;
+
+  border-color: #171717;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   GENERATE
+   ========================================================= */
+
+.generate-section {
+  margin-top: 22px;
+}
+
+.generate-button {
+  width: 100%;
+  height: 54px;
+
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 0;
+
+  background: #171717;
+
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.generate-button:hover:not(:disabled) {
+  background: #2a2a28;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.12);
+}
+
+.generate-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.generate-button:disabled {
+  opacity: 0.45;
+
+  cursor: wait;
+}
+
+.button-arrow {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.generate-note {
+  margin: 9px 0 0;
+
+  color: #aaa9a4;
+
+  text-align: center;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon {
+  margin-bottom: 15px;
+
+  color: #999994;
+
+  font-size: 24px;
+}
+
+.empty-state h1 {
+  margin: 0;
+
+  color: #171717;
+
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.empty-state p {
+  color: #999994;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    max-width: 760px;
+  }
+
+  .image-frame {
+    max-width: 600px;
+
+    margin: 0 auto;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .editor-header {
+    padding: 0 20px;
+  }
+
+  .editor-layout {
+    padding: 30px 20px 50px;
+  }
+
+  .editor-step {
+    display: none;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .palette {
+    flex-wrap: wrap;
+  }
+}

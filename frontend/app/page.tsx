@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 
+import { analyzeImage } from "@/lib/api";
+
 import {
   extractColors,
   generateRandomColor,
@@ -27,6 +29,10 @@ export default function Home() {
 
   const [hasUploadedImage, setHasUploadedImage] = useState(false);
 
+  const [imageFile, setImageFile] = useState<File | null>(null);
+
+const [ isAnalyzing, setIsAnalyzing] = useState(false);
+
   const handleFile = async (file: File) => {
     if (!file.type.startsWith("image/")) {
       alert("Please upload an image file.");
@@ -34,6 +40,7 @@ export default function Home() {
     }
 
     setIsExtracting(true);
+    setImageFile(file)
 
     try {
       const url = URL.createObjectURL(file);
@@ -83,6 +90,84 @@ export default function Home() {
       handleFile(file);
     }
   };
+
+      const handleContinue = async () => {
+
+        if (!imageFile) {
+          alert("Image is missing.");
+          return;
+        }
+
+
+        const lockedColors =
+          palette
+            .filter((color) => color.locked)
+            .map((color) => color.hex);
+
+
+        if (lockedColors.length === 0) {
+          alert(
+            "Lock at least one color before continuing."
+          );
+
+          return;
+        }
+
+
+        setIsAnalyzing(true);
+
+
+        try {
+
+          const result =
+            await analyzeImage(
+              imageFile,
+              lockedColors
+            );
+
+
+          sessionStorage.setItem(
+            "imageId",
+            result.image_id
+          );
+
+
+          sessionStorage.setItem(
+            "prompt",
+            result.prompt
+          );
+
+          sessionStorage.setItem(
+            "imageUrl",
+            result.image_url
+          );
+
+
+          sessionStorage.setItem(
+            "lockedColors",
+            JSON.stringify(
+              result.locked_colors
+            )
+          );
+
+
+          window.location.href =
+            "/prompt";
+
+        } catch (error) {
+
+          console.error(error);
+
+          alert(
+            "Failed to analyze the image."
+          );
+
+        } finally {
+
+          setIsAnalyzing(false);
+
+        }
+      };
 
   const toggleLock = (index: number) => {
     setPalette((current) =>
@@ -355,12 +440,14 @@ export default function Home() {
             </div>
 
             <button
-              className="generate-button"
-              onClick={generateNewPalette}
-            >
-              Generate palette
-              <span>SPACE</span>
-            </button>
+            className="generate-button"
+            onClick={handleContinue}
+            disabled={isAnalyzing}
+          >
+            {isAnalyzing
+              ? "Analyzing image..."
+              : "Continue"}
+          </button>
           </div>
         </section>
       )}

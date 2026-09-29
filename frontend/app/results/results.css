@@ -1,0 +1,321 @@
+/* =========================================================
+   COLORFORGE — RESULTS PAGE
+   ========================================================= */
+
+.results-page {
+  min-height: 100vh;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.results-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.results-header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================================
+   COMPLETION STATUS
+   ========================================================= */
+
+.completion-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 12px;
+  color: #34d399;
+}
+
+.completion-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #34d399;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.results-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 32px;
+}
+
+.page-eyebrow {
+  margin-bottom: 12px;
+
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.page-title {
+  margin: 0;
+
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.page-description {
+  max-width: 560px;
+  margin-top: 12px;
+
+  font-size: 14px;
+  line-height: 24px;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* =========================================================
+   PROCESSING STATE
+   ========================================================= */
+
+.processing-container {
+  min-height: 400px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.processing-content {
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+
+  margin: 0 auto 20px;
+
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: rgba(255, 255, 255, 0.8);
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+.processing-text {
+  margin: 0;
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.processing-subtext {
+  margin-top: 8px;
+
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESULTS GRID
+   ========================================================= */
+
+.results-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+/* =========================================================
+   IMAGE CARD
+   ========================================================= */
+
+.image-card {
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  transition:
+    border-color 300ms ease,
+    transform 300ms ease;
+}
+
+.image-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.image-wrapper {
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #000;
+}
+
+.generated-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 500ms ease;
+}
+
+.image-card:hover .generated-image {
+  transform: scale(1.02);
+}
+
+/* =========================================================
+   IMAGE LABEL
+   ========================================================= */
+
+.image-label {
+  position: absolute;
+
+  top: 16px;
+  left: 16px;
+
+  padding: 6px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+  padding: 40px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  text-align: center;
+}
+
+.empty-state-text {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 22px;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   ERROR STATE
+   ========================================================= */
+
+.error-state {
+  padding: 40px;
+
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 16px;
+
+  background: rgba(248, 113, 113, 0.05);
+
+  text-align: center;
+}
+
+.error-text {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #fca5a5;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .results-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .results-header-inner {
+    padding: 20px;
+  }
+
+  .results-content {
+    padding: 36px 20px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .completion-status {
+    display: none;
+  }
+}
