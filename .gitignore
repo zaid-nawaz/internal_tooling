@@ -18,7 +18,10 @@
 /out/
 
 # production
-/frontend/build
+frontend/build/
+backend/storage/
+
+storage
 
 # misc
 .DS_Store
